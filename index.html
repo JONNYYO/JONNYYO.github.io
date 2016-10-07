@@ -11,7 +11,7 @@
       // onload callback
       function drawChart() {
 
-        var public_key = 'G2g6b016rnsLVxGm2LQd';
+        var public_key = 'dZ4EVmE8yGCRGx5XRX1W';
 
         // JSONP request
         var jsonData = $.ajax({
@@ -23,21 +23,21 @@
           var data = new google.visualization.DataTable();
 
           data.addColumn('datetime', 'Time');
-          data.addColumn('power', 'Voltage');
-          // data.addColumn('number', 'Wind Speed MPH');
+          data.addColumn('number', 'Temp');
+          data.addColumn('number', 'Wind Speed MPH');
 
           $.each(results, function (i, row) {
             data.addRow([
               (new Date(row.timestamp)),
-              parseFloat(row.power),
-              // parseFloat(row.windspeedmph)
+              parseFloat(row.tempf),
+              parseFloat(row.windspeedmph)
             ]);
           });
 
           var chart = new google.visualization.LineChart($('#chart').get(0));
 
           chart.draw(data, {
-            title: 'Power Consumption Graph'
+            title: 'Wimp Weather Station'
           });
 
         });
