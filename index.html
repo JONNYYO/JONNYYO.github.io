@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <!-- EXTERNAL LIBS-->
@@ -7,11 +8,6 @@
     <!-- EXAMPLE SCRIPT -->
     <script>
       // onload callback
-    google.charts.load('current', {'packages':['gauge']});
-    google.charts.setOnLoadCallback(drawGauge);
-    var gaugeOptions = {min: 0, max: 280, yellowFrom: 200, yellowTo: 250,
-      redFrom: 250, redTo: 280, minorTicks: 5};
-    var gauge;
       function drawChart() {
         var public_key = 'G2g6b016rnsLVxGm2LQd';
         // JSONP request
@@ -21,29 +17,27 @@
           dataType: 'jsonp',
         }).done(function (results) {
           var data = new google.visualization.DataTable();
-//          data.addColumn('datetime', 'Time');
-            data.addColumn('number', 'Power');
-            data.addRow(3);
-            gaugeData.setCell(0, 0, 20);
-//            gaugeData.setCell(0, 1, 80);
-
-            gauge = new
-            google.visualization.Gauge(document.getElementById('gauge_div'));
-            gauge.draw(gaugeData, gaugeOptions);
+          data.addColumn('datetime', 'Time');
+          data.addColumn('number', 'Power');
+          $.each(results, function (i, row) {
+            data.addRow([
+              (new Date(row.timestamp)),
+              parseFloat(row.power)
+            ]);
           });
-//          var chart = new google.visualization.LineChart($('#chart').get(0));//
-//          chart.draw(data, {
-//            title: 'Wimp Weather Station'
-//          });
- //       });
-//      }
+          var chart = new google.visualization.LineChart($('#chart').get(0));
+          chart.draw(data, {
+            title: 'Wimp Weather Station'
+          });
+        });
+      }
       // load chart lib
-//      google.load('visualization', '1', {
-//        packages: ['corechart']
-//      });
+      google.load('visualization', '1', {
+        packages: ['corechart']
+      });
       // call drawChart once google charts is loaded
-//      google.setOnLoadCallback(drawChart);
-//      setInterval(drawChart, 5000);
+      google.setOnLoadCallback(drawChart);
+      setInterval(drawChart, 5000);
     </script>
 
   </head>
