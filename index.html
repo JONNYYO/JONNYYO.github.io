@@ -41,9 +41,9 @@
           gauge.draw(gaugeData,options);
 
           // Show real data
-          gaugeData.setValue(0,1,parseFloat(latest.temp));
+          gaugeData.setValue(0,1,parseFloat(latest.voltage));
           gaugeData.setValue(1,1,parseFloat(latest.power));
-          gaugeData.setValue(2,1,parseFloat(latest.hidx));
+          gaugeData.setValue(2,1,parseFloat(latest.current));
 
           gauge.draw(gaugeData,options);
         });
@@ -56,6 +56,7 @@
 
       // call drawChart once google charts is loaded
       google.setOnLoadCallback(drawChart);
+      setInterval(drawChart, 5000);
     </script>
 
   </head>
