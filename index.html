@@ -7,52 +7,38 @@
 
     <!-- EXAMPLE SCRIPT -->
     <script>
-
       // onload callback
       function drawChart() {
-
         var public_key = 'G2g6b016rnsLVxGm2LQd';
-
         // JSONP request
         var jsonData = $.ajax({
           url: 'https://data.sparkfun.com/output/' + public_key + '.json',
           data: {page: 1},
           dataType: 'jsonp',
         }).done(function (results) {
-
           var data = new google.visualization.DataTable();
-
           data.addColumn('datetime', 'Time');
           data.addColumn('number', 'Power');
-
           $.each(results, function (i, row) {
             data.addRow([
               (new Date(row.timestamp)),
               parseFloat(row.power)
             ]);
           });
-
           var chart = new google.visualization.LineChart($('#chart').get(0));
-
           chart.draw(data, {
             title: 'Wimp Weather Station'
           });
-
         });
-
       }
-
       // load chart lib
       google.load('visualization', '1', {
         packages: ['corechart']
       });
-
       // call drawChart once google charts is loaded
       //google.setOnLoadCallback(drawChart);
       
-      drawChart();
-      setInterval(drawChart, 10000);
-
+      setInterval(drawChart, 100);
     </script>
 
   </head>
