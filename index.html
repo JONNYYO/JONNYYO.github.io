@@ -19,19 +19,19 @@
           var data = new google.visualization.DataTable();
 
           data.addColumn('datetime', 'Time');
-          data.addColumn('number', 'Power');
+          data.addColumn('number', 'Current');
 
           $.each(results, function (i, row) {
             data.addRow([
               (new Date(row.timestamp)),
-              parseFloat(row.power)
+              parseFloat(row.current)
             ]);
           });
 
           var chartPowerYearly = new google.visualization.LineChart($('#chartPowerYearly').get(0));
 
           chartPowerYearly.draw(data, {
-            title: 'Power vs Time'
+            title: 'Current vs Time'
           });
 
         });
