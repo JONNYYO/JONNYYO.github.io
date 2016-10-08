@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Smart Home</title>
     <!-- EXTERNAL LIBS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://www.google.com/jsapi"></script>
@@ -47,28 +46,6 @@
           gaugeData.setValue(2,1,parseFloat(latest.hidx));
 
           gauge.draw(gaugeData,options);
-
-//          var data = new google.visualization.DataTable();
-//
-//          data.addColumn('datetime', 'Time');
-  //        data.addColumn('number', 'Temp');
-//          data.addColumn('number', 'Humidity');
-//          data.addColumn('number', 'Heat Index');
-//
- //         $.each(results, function (i, row) {
-//            data.addRow([
-//              (new Date(row.timestamp)),
-//              parseFloat(row.temp),
-//              parseFloat(row.hum),
-//              parseFloat(row.hidx)
-//            ]);
-//          });
-//
-//          var chart = new google.visualization.LineChart($('#temperature').get(0));
-//          chart.draw(data, {
-//            title: 'ESP8266 DHT22 Wifi Weather Station'
-//          });
-//
         });
       }
 
