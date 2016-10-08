@@ -28,10 +28,10 @@
             ]);
           });
 
-          var chartPowerYearly = new google.visualization.LineChart($('#chartPowerYearly').get(0));
+          var chartCurrentYearly = new google.visualization.LineChart($('#chartCurrentYearly').get(0));
 
-          chartPowerYearly.draw(data, {
-            title: 'Current vs Time'
+          chartCurrentYearly.draw(data, {
+            title: 'Current(Am) vs Time'
           });
 
         });
@@ -49,6 +49,6 @@
 
   </head>
   <body>
-    <div id="chartPowerYearly" style="width: 100%;"></div>
+    <div id="chartCurrentYearly" style="width: 100%;"></div>
   </body>
 </html>
