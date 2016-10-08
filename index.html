@@ -16,7 +16,7 @@
         var public_key = 'G2g6b016rnsLVxGm2LQd';
         // JSONP request
         var jsonData = $.ajax({
-          url: 'https://data.sparkfun.com/output/' + public_key + '.json?gt[timestamp]=now%20-1hour',
+          url: 'https://data.sparkfun.com/output/' + public_key + '.json',
           data: {page: 1},
           dataType: 'jsonp',
         })//.done(function (results) {
