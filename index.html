@@ -49,6 +49,8 @@
 
       // call drawChart once google charts is loaded
       google.setOnLoadCallback(drawChart);
+      
+      setInterval(google.setOnLoadCallback(drawChart), 5000);
 
     </script>
 
