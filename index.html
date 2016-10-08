@@ -7,14 +7,11 @@
 
     <!-- EXAMPLE SCRIPT -->
     <script>
-
       // onload callback
       function drawChart() {
-
         var cloud_url = 'https://data.sparkfun.com/output/';
         // Public Key from https://data.sparkfun.com
         var public_key = 'G2g6b016rnsLVxGm2LQd';
-
         // JSONP request
         var jsonData = $.ajax({
           url:  cloud_url + public_key + '.json',
@@ -34,32 +31,24 @@
             redFrom: 90, redTo: 100,
             yellowFrom:80, yellowTo: 90,
             greenFrom:70, greenTo: 80,
-            minorTicks: 5,
-//            animation:'false'
-      },
+            minorTicks: 5
           };
-
           // For animation purpose only
           gauge.draw(gaugeData,options);
-
           // Show real data
           gaugeData.setValue(0,1,parseFloat(latest.voltage));
           gaugeData.setValue(1,1,parseFloat(latest.power));
           gaugeData.setValue(2,1,parseFloat(latest.current));
-
           gauge.draw(gaugeData,options);
         });
       }
-
       // load chart lib
       google.load('visualization', '1', {
         packages: ['corechart','gauge']
       });
-
       // call drawChart once google charts is loaded
       google.setOnLoadCallback(drawChart);
       setInterval(drawChart, 5000);
-
     </script>
 
   </head>
