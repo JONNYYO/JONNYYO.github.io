@@ -19,7 +19,7 @@
           url: 'https://data.sparkfun.com/output/' + public_key + '.json?gt[timestamp]=now%20-1hour',
           data: {page: 1},
           dataType: 'jsonp',
-        }).done(function (results) {
+        })//.done(function (results) {
           var datax = new google.visualization.DataTable();
           datax.addColumn('datetime', 'Time');
           datax.addColumn('number', 'Power');
