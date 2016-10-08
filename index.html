@@ -19,25 +19,18 @@
           url: 'https://data.sparkfun.com/output/' + public_key + '.json?gt[timestamp]=now%20-1hour',
           data: {page: 1},
           dataType: 'jsonp',
-        })//.done(function (results) {
-//          var data = new google.visualization.DataTable();
-//          data.addColumn('datetime', 'Time');
-//          data.addColumn('number', 'Power');
-//          $.each(results, function (i, row) {
-//            data.addRow([
-//              (new Date(row.timestamp)),
-//              parseFloat(row.power)
-//            ]);
-//          });
+        }).done(function (results) {
+          var datax = new google.visualization.DataTable();
+          datax.addColumn('datetime', 'Time');
+          datax.addColumn('number', 'Power');
+          $.each(results, function (i, row) {
+            datax.addRow([
+              (new Date(row.timestamp)),
+              parseFloat(row.power)
+            ]);
+          });
         
-//          var data = google.visualization.arrayToDataTable([
-//          ['Labels', 'Values'],
-//          ['Memory', 80],
-//          ['CPU', 55],
-//          ['Network', 68]
-//        ]);
-        
-               var data = new google.visualization.DataTable();
+      var data = new google.visualization.DataTable();
       data.addColumn('number', 'Voltage');
       data.addColumn('number', 'Power');
       data.addRows(3);
