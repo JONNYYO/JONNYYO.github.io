@@ -6,32 +6,32 @@
 
     <script>
 
-      function drawChartIY() {
+      function drawChart() {
 
-        var public_keyIY = 'G2g6b016rnsLVxGm2LQd';
+        var public_key = 'G2g6b016rnsLVxGm2LQd';
 
-        var jsonDataIY = $.ajax({
-          url: 'https://data.sparkfun.com/output/' + public_keyIY + '.json?gt[timestamp]=now%20-1year',
+        var jsonData = $.ajax({
+          url: 'https://data.sparkfun.com/output/' + public_key + '.json?gt[timestamp]=now%20-1year',
           data: {page: 1},
           dataType: 'jsonp',
-        }).done(function (resultsIY) {
+        }).done(function (results) {
 
-          var dataIY = new google.visualization.DataTable();
+          var data = new google.visualization.DataTable();
 
-          dataIY.addColumn('datetime', 'Time');
-          dataIY.addColumn('number', 'Current');
+          data.addColumn('datetime', 'Time');
+          data.addColumn('number', 'Power');
 
-          $.each(resultsIY, function (i, row) {
-            dataIY.addRow([
+          $.each(results, function (i, row) {
+            data.addRow([
               (new Date(row.timestamp)),
-              parseFloat(row.voltage)
+              parseFloat(row.power)
             ]);
           });
 
-          var chartCurrentYearly = new google.visualization.LineChart($('#chartCurrentYearly').get(0));
+          var chartPowerYearly = new google.visualization.LineChart($('#chartPowerYearly').get(0));
 
-          chartCurrentYearly.draw(data, {
-            title: 'Current(Am) vs Time'
+          chartPowerYearly.draw(data, {
+            title: 'Power vs Time'
           });
 
         });
@@ -43,12 +43,12 @@
       });
 
       google.setOnLoadCallback(drawChart);
-      setInterval(drawChartIY, 5000);
+      setInterval(drawChart, 5000);
 
     </script>
 
   </head>
   <body>
-    <div id="chartCurrentYearly" style="width: 100%;"></div>
+    <div id="chartPowerYearly" style="width: 100%;"></div>
   </body>
 </html>
