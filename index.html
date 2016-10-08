@@ -19,13 +19,13 @@
           url: 'https://data.sparkfun.com/output/' + public_key + '.json',
           data: {page: 1},
           dataType: 'jsonp',
-        })//.done(function (results) {
+        }).done(function (results) {
           var datax = new google.visualization.DataTable();
           datax.addColumn('datetime', 'Time');
           datax.addColumn('number', 'Power');
-//          $.each(results, function (i, row) {
+          $.each(results, function (i, row) {
             datax.addRow([(new Date(row.timestamp)), parseFloat(row.power)]);
-//          });
+          });
         
       var datay = new google.visualization.DataTable();
       datay.addColumn('number', 'Voltage');
